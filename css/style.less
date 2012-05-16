@@ -74,7 +74,21 @@ td { vertical-align: top; }
    Author: J. Ky Marsh
    ========================================================================== */
 
+.test {
+    margin: 20px auto;
 
+    border: 1px solid #000;
+}
+
+.test th, .test td {
+    padding: 20px;
+
+    border: 1px solid #000;
+}
+
+.test tr:nth-child(even) {
+    background: #f1f1f1;
+}
 
 
 
@@ -121,7 +135,7 @@ td { vertical-align: top; }
 /* =============================================================================
    Print Styles
    ========================================================================== */
- 
+
 @media print {
   * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
   a, a:visited { text-decoration: underline; }
