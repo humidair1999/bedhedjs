@@ -24,17 +24,57 @@
             this.name = pluginName;
             this.options = $.extend({}, defaults, options);
 
-            console.log(this);
+            // console.log(this);
 
             this.init();
         };
 
     Plugin.prototype.repeatHeader = function($element, options, thArray) {
+        var constructedRow = "<tr>",
+            openCellTag = ((options.terminateTable === false) ? "<td>" : "<th>"),
+            closeCellTag = openCellTag.replace("<","</"),
+            attrString;
+
         console.log($element);
         console.log(options);
         console.log(thArray);
 
+        console.log(openCellTag);
+        console.log(closeCellTag);
 
+        for (var i=0; i < thArray.length; i++) {
+            console.log(i);
+
+            if (options.preserveStyle) {
+                attrString = "colspan=\"" + thArray[i].colSpan + "\" "
+                            + "style=\""
+                            + "font-size:" + thArray[i].fontSize + ";"
+                            + "font-weight:" + thArray[i].fontWeight + ";"
+                            + "font-style:" + thArray[i].fontStyle + ";"
+                            + "color:" + thArray[i].fontColor + ";"
+                            + "\"";
+
+                openCellTag = openCellTag.replace(">", " " + attrString + ">");
+            }
+
+            constructedRow += openCellTag;
+            constructedRow += thArray[i].content;
+            constructedRow += closeCellTag;
+        }
+
+        constructedRow += "</tr>";
+
+        console.log(constructedRow);
+
+        $element.find("tr").each(function(index) {
+            if ((index % options.period) === 0 && index !== 0) {
+                $(this).css("background", "green");
+
+                console.log($(this));
+
+                $(this).after(constructedRow);
+            }
+        });
     };
 
     Plugin.prototype.fixHeader = function() {
@@ -55,7 +95,9 @@
             if (options.preserveStyle) {
                 thObject.fontSize = $(this).css("font-size"),
                 thObject.fontWeight = $(this).css("font-weight"),
-                thObject.fontStyle = $(this).css("font-style");
+                thObject.fontStyle = $(this).css("font-style"),
+                thObject.fontColor = $(this).css("color"),
+                thObject.colSpan = $(this).attr("colspan");
             }
 
             thArray.push(thObject);
