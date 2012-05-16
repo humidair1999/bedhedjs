@@ -13,7 +13,10 @@
     var pluginName = "bedhed",
         defaults = {
             mode: "repeater",
-            period: 5
+            period: 5,
+            preserveStyle: true,
+            terminateTable: false
+            // headerClass has no default; no point in initializing an empty option!
         },
         Plugin = function(element, options) {
             this.element = element;
@@ -26,22 +29,31 @@
             this.init();
         };
 
+    Plugin.prototype.repeatHeader = function() {
+        console.log("repeat");
+    };
+
+    Plugin.prototype.fixHeader = function() {
+        console.log("fix");
+    };
+
     // Initialization method for the plugin fires after setup is complete
     Plugin.prototype.init = function() {
         var $element = $(this.element),
             options = this.options,
-            thContent;
+            $thElement = $element.find("th"),
+            thObject = {
+                content: $thElement.html(),
+                fontSize: $thElement.css("font-size"),
+                fontWeight: $thElement.css("font-weight"),
+                fontStyle: $thElement.css("font-style")
+            };
 
         console.log($element);
-        console.log(this.defaults);
-        console.log(this.name);
         console.log(options);
+        console.log(thObject);
 
-        $element.find("th").each(function() {
-            thContent = $(this).html();
-
-            console.log(thContent);
-        });
+        options.mode === "repeater" ? this.repeatHeader() : this.fixHeader();
     };
 
     // A really lightweight plugin wrapper around the constructor,
@@ -53,6 +65,6 @@
                 new Plugin(this, options));
             }
         });
-    }
+    };
 
 })(jQuery, window, document);
