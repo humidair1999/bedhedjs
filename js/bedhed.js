@@ -67,18 +67,28 @@
         console.log(constructedRow);
 
         $element.find("tr").each(function(index) {
+            var followingRows;
+
             if ((index % options.period) === 0 && index !== 0) {
-                $(this).css("background", "green");
+                if (options.terminateTable) {
+                    followingRows = (followingRows || $(this).nextAll());
 
-                console.log($(this));
+                    $(this).nextAll().remove();
 
-                $(this).after(constructedRow);
+                    console.log(followingRows);
+
+                    $(this).parents("table").parent().append("<table><tbody>" + constructedRow).append(followingRows);
+                }
+                else {
+                    $(this).after(constructedRow);
+                }
             }
         });
     };
 
     Plugin.prototype.fixHeader = function() {
-        console.log("fix");
+        // TODO: Add in option to use fixed CSS header, rather than repeated
+        // headers
     };
 
     // Initialization method for the plugin fires after setup is complete
