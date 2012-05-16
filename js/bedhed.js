@@ -29,8 +29,12 @@
             this.init();
         };
 
-    Plugin.prototype.repeatHeader = function() {
-        console.log("repeat");
+    Plugin.prototype.repeatHeader = function($element, options, thArray) {
+        console.log($element);
+        console.log(options);
+        console.log(thArray);
+
+
     };
 
     Plugin.prototype.fixHeader = function() {
@@ -41,19 +45,23 @@
     Plugin.prototype.init = function() {
         var $element = $(this.element),
             options = this.options,
-            $thElement = $element.find("th"),
-            thObject = {
-                content: $thElement.html(),
-                fontSize: $thElement.css("font-size"),
-                fontWeight: $thElement.css("font-weight"),
-                fontStyle: $thElement.css("font-style")
+            thArray = [];
+
+        $element.find("th").each(function() {
+            var thObject = {
+                content: $(this).html()
             };
 
-        console.log($element);
-        console.log(options);
-        console.log(thObject);
+            if (options.preserveStyle) {
+                thObject.fontSize = $(this).css("font-size"),
+                thObject.fontWeight = $(this).css("font-weight"),
+                thObject.fontStyle = $(this).css("font-style");
+            }
 
-        options.mode === "repeater" ? this.repeatHeader() : this.fixHeader();
+            thArray.push(thObject);
+        });
+
+        (options.mode === "repeater") ? this.repeatHeader($element, options, thArray) : this.fixHeader();
     };
 
     // A really lightweight plugin wrapper around the constructor,
