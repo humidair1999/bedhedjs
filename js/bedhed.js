@@ -81,16 +81,15 @@
         else {
             $element.find("tr").each(function(index) {
                 rowNumbers.push(options.period * index);
-            });
 
-            console.log(rowNumbers);
-
-            $element.find("tr").each(function(index) {
                 if ((index % options.period) === 0 && index !== 0) {
                     $element.clone().appendTo($element.parent());
                 }
             });
 
+            console.log(rowNumbers);
+
+            // TODO: if multiple tables on page, this could totally fuck everything up
             $element.parent().find("table").each(function() {
 
                 console.log($(this));
