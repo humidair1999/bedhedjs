@@ -31,7 +31,7 @@
 
     Plugin.prototype.repeatHeader = function($element, options, thArray) {
         var constructedRow,
-            openCellTag = ((options.terminateTable === false) ? "<td>" : "<th>"),
+            openCellTag = "<td>",
             closeCellTag = openCellTag.replace("<","</"),
             attrString,
             rowNumbers = [];
@@ -103,9 +103,9 @@
 
                 });
 
-                rowNumbers = rowNumbers.slice(1);
+                rowNumbers.shift();
 
-                console.log(rowNumbers);
+                console.log(rowNumbers.length);
 
             });
 
