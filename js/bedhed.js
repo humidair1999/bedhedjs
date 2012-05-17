@@ -34,7 +34,7 @@
             openCellTag = ((options.terminateTable === false) ? "<td>" : "<th>"),
             closeCellTag = openCellTag.replace("<","</"),
             attrString,
-            followingRows = [];
+            rowNumbers = [];
 
         console.log($element);
         console.log(options);
@@ -79,9 +79,36 @@
             });
         }
         else {
-            console.log(followingRows);
+            $element.find("tr").each(function(index) {
+                rowNumbers.push(options.period * index);
+            });
 
-            $element.remove();
+            console.log(rowNumbers);
+
+            $element.find("tr").each(function(index) {
+                if ((index % options.period) === 0 && index !== 0) {
+                    $element.clone().appendTo($element.parent());
+                }
+            });
+
+            $element.parent().find("table").each(function() {
+
+                console.log($(this));
+
+                $(this).find("tr").each(function(index) {
+
+                    if ((index <= rowNumbers[0] || index > (rowNumbers[0] + options.period)) && (index !== 0)) {
+                        $(this).remove();
+                    }
+
+                });
+
+                rowNumbers = rowNumbers.slice(1);
+
+                console.log(rowNumbers);
+
+            });
+
         }
     };
 
