@@ -30,10 +30,11 @@
         };
 
     Plugin.prototype.repeatHeader = function($element, options, thArray) {
-        var constructedRow = "<tr>",
+        var constructedRow,
             openCellTag = ((options.terminateTable === false) ? "<td>" : "<th>"),
             closeCellTag = openCellTag.replace("<","</"),
-            attrString;
+            attrString,
+            followingRows = [];
 
         console.log($element);
         console.log(options);
@@ -42,48 +43,51 @@
         console.log(openCellTag);
         console.log(closeCellTag);
 
-        for (var i=0; i < thArray.length; i++) {
-            console.log(i);
-
-            if (options.preserveStyle) {
-                attrString = "colspan=\"" + thArray[i].colSpan + "\" "
-                            + "style=\""
-                            + "font-size:" + thArray[i].fontSize + ";"
-                            + "font-weight:" + thArray[i].fontWeight + ";"
-                            + "font-style:" + thArray[i].fontStyle + ";"
-                            + "color:" + thArray[i].fontColor + ";"
-                            + "\"";
-
-                openCellTag = openCellTag.replace(">", " " + attrString + ">");
+        if (!(options.terminateTable)) {
+            if (options.headerClass) {
+                constructedRow = "<tr class=\"" + options.headerClass + "\">";
+            }
+            else {
+                constructedRow = "<tr>";
             }
 
-            constructedRow += openCellTag;
-            constructedRow += thArray[i].content;
-            constructedRow += closeCellTag;
-        }
+            console.log(constructedRow);
 
-        constructedRow += "</tr>";
+            for (var i=0; i < thArray.length; i++) {
+                console.log(i);
 
-        console.log(constructedRow);
+                if (options.preserveStyle) {
+                    attrString = "colspan=\"" + thArray[i].colSpan + "\" "
+                                + "style=\""
+                                + "font-size:" + thArray[i].fontSize + ";"
+                                + "font-weight:" + thArray[i].fontWeight + ";"
+                                + "font-style:" + thArray[i].fontStyle + ";"
+                                + "color:" + thArray[i].fontColor + ";"
+                                + "\"";
 
-        $element.find("tr").each(function(index) {
-            var followingRows;
-
-            if ((index % options.period) === 0 && index !== 0) {
-                if (options.terminateTable) {
-                    followingRows = (followingRows || $(this).nextAll());
-
-                    $(this).nextAll().remove();
-
-                    console.log(followingRows);
-
-                    $(this).parents("table").parent().append("<table><tbody>" + constructedRow).append(followingRows);
+                    openCellTag = openCellTag.replace(">", " " + attrString + ">");
                 }
-                else {
+
+                constructedRow += openCellTag;
+                constructedRow += thArray[i].content;
+                constructedRow += closeCellTag;
+            }
+
+            constructedRow += "</tr>";
+
+            console.log(constructedRow);
+
+            $element.find("tr").each(function(index) {
+                if ((index % options.period) === 0 && index !== 0) {
                     $(this).after(constructedRow);
                 }
-            }
-        });
+            });
+        }
+        else {
+            console.log(followingRows);
+
+            $element.remove();
+        }
     };
 
     Plugin.prototype.fixHeader = function() {
