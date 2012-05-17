@@ -44,12 +44,7 @@
         console.log(closeCellTag);
 
         if (!(options.terminateTable)) {
-            if (options.headerClass) {
-                constructedRow = "<tr class=\"" + options.headerClass + "\">";
-            }
-            else {
-                constructedRow = "<tr>";
-            }
+            constructedRow = (options.headerClass) ? "<tr class=\"" + options.headerClass + "\">" : "<tr>";
 
             console.log(constructedRow);
 
