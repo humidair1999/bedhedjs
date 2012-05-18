@@ -216,6 +216,7 @@
         </tr>
     </table>
 
+<!--
     <table class="test">
         <tr>
             <th>header1</th>
@@ -238,6 +239,7 @@
             <td>cell</td>
         </tr>
     </table>
+-->
 
     <p>
         hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol hahaha lol
@@ -273,10 +275,10 @@
 
 <script>
     $("table").bedhed({
-        mode: "fixed",
-        // terminateTable: false,
+        mode: "repeater",
+        terminateTable: true,
         preserveStyle: true,
-        // period: 5,
+        period: 5,
         headerClass: "testing"
     });
 </script>

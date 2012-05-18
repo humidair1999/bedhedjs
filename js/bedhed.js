@@ -83,7 +83,7 @@
                 rowNumbers.push(options.period * index);
 
                 if ((index % options.period) === 0 && index !== 0) {
-                    $element.clone().appendTo($element.parent());
+                    $element.after($element.clone());
                 }
             });
 
@@ -158,7 +158,12 @@
             //console.log($element.height());
             //console.log($(window).height());
 
-            ($clonedElement.offset().top > $element.offset().top) ? $clonedElement.fadeIn() : $clonedElement.fadeOut();
+            if ($clonedElement.offset().top >= $element.offset().top) {
+                $clonedElement.fadeIn();
+            }
+            else {
+                $clonedElement.fadeOut();
+            }
         });
     };
 
