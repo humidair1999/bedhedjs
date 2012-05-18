@@ -7,9 +7,7 @@ Copyright (c) 2012
 
 */
 
-;
-
-(function($, window, document, undefined) {
+;(function($, window, document, undefined) {
     // create the defaults and set up the constructor for the plugin itself
     var pluginName = "bedhed",
         defaults = {
