@@ -40,16 +40,16 @@
         console.log(options);
         console.log(thArray);
 
-        console.log(openCellTag);
-        console.log(closeCellTag);
+        // console.log(openCellTag);
+        // console.log(closeCellTag);
 
         if (!(options.terminateTable)) {
             constructedRow = (options.headerClass) ? "<tr class=\"" + options.headerClass + "\">" : "<tr>";
 
-            console.log(constructedRow);
+            // console.log(constructedRow);
 
             for (var i=0; i < thArray.length; i++) {
-                console.log(i);
+                // console.log(i);
 
                 if (options.preserveStyle) {
                     attrString = "colspan=\"" + thArray[i].colSpan + "\" "
@@ -70,7 +70,7 @@
 
             constructedRow += "</tr>";
 
-            console.log(constructedRow);
+            // console.log(constructedRow);
 
             $element.find("tr").each(function(index) {
                 if ((index % options.period) === 0 && index !== 0) {
@@ -111,9 +111,45 @@
         }
     };
 
-    Plugin.prototype.fixHeader = function() {
-        // TODO: Add in option to use fixed CSS header, rather than repeated
-        // headers
+    Plugin.prototype.fixHeader = function($element, options, thArray) {
+        var $clonedElement = $element.clone(),
+            elementOffset = $element.offset().left,
+            elementWidth = $element.outerWidth(),
+            cellWidthArray = [];
+
+        console.log($clonedElement);
+
+        $clonedElement.find("tr").each(function(index) {
+            if (index !== 0) {
+                $(this).remove();
+            }
+            else {
+                $(this).find("th").each(function(index) {
+                    console.log($(this));
+
+                    $(this).css("width", thArray[index].width);
+                });
+            }
+        });
+
+        if (options.headerClass) {
+            $clonedElement.addClass(options.headerClass);
+        }
+
+        $clonedElement
+            .css("position", "fixed")
+            .css("top", 0)
+            .css("left", elementOffset)
+            .css("width", elementWidth)
+            .css("margin", 0);
+
+        console.log($clonedElement);
+
+        console.log($element);
+        console.log(options);
+        console.log(thArray);
+
+        $element.parents("body").append($clonedElement);
     };
 
     // Initialization method for the plugin fires after setup is complete
@@ -124,7 +160,8 @@
 
         $element.find("th").each(function() {
             var thObject = {
-                content: $(this).html()
+                content: $(this).html(),
+                width: $(this).width()
             };
 
             if (options.preserveStyle) {
@@ -138,7 +175,7 @@
             thArray.push(thObject);
         });
 
-        (options.mode === "repeater") ? this.repeatHeader($element, options, thArray) : this.fixHeader();
+        (options.mode === "repeater") ? this.repeatHeader($element, options, thArray) : this.fixHeader($element, options, thArray);
     };
 
     // A really lightweight plugin wrapper around the constructor,
