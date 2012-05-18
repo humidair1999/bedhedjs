@@ -104,7 +104,13 @@
 
                 rowNumbers.shift();
 
-                console.log(rowNumbers.length);
+                $(this).find("tr").each(function() {
+                    if ($(this).siblings().length === 0) {
+                        $(this).remove();
+                    }
+                });
+
+                console.log(rowNumbers);
 
             });
 
@@ -154,11 +160,13 @@
 
         $(window).scroll(function() {
             console.log($clonedElement.offset().top);
-            console.log($element.offset().top);
+            //console.log($element.offset().top);
             //console.log($element.height());
             //console.log($(window).height());
 
-            if ($clonedElement.offset().top >= $element.offset().top) {
+            console.log($element.offset().top);
+
+            if (($clonedElement.offset().top >= $element.offset().top) && ($clonedElement.offset().top <= ($element.offset().top + $element.height()))) {
                 $clonedElement.fadeIn();
             }
             else {
