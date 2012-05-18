@@ -141,7 +141,8 @@
             .css("top", 0)
             .css("left", elementOffset)
             .css("width", elementWidth)
-            .css("margin", 0);
+            .css("margin", 0)
+            .hide();
 
         console.log($clonedElement);
 
@@ -150,6 +151,15 @@
         console.log(thArray);
 
         $element.parents("body").append($clonedElement);
+
+        $(window).scroll(function() {
+            console.log($clonedElement.offset().top);
+            console.log($element.offset().top);
+            //console.log($element.height());
+            //console.log($(window).height());
+
+            ($clonedElement.offset().top > $element.offset().top) ? $clonedElement.fadeIn() : $clonedElement.fadeOut();
+        });
     };
 
     // Initialization method for the plugin fires after setup is complete
