@@ -4,29 +4,589 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<title>bedhed.js - a jQuery plugin by J. Ky Marsh</title>
+	<meta name="description" content="bedhed.js jQuery plugin for better handling of headers for particularly long tables">
+	<meta name="author" content="J. Ky Marsh">
 
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/960.css">
 
 	<script src="js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
-<header>
 
+<header>
+    <!-- it's empty! -->
 </header>
-<div role="main">
+
+<div role="main" class="main container_12">
+
+    <h1>bedhed.js</h1>
+    <h2>Better handling of headers for particularly long tables</h2>
+    <h4>a jQuery plugin by <a href="http://jkymarsh.com">J. Ky Marsh</a>, emotional support and comedic relief by
+        <a href="http://github.com/frxnz">Derek Wheelden</a></h4>
+
+    <hr />
+
+    <p>
+        Ever written a particularly long HTML form or survey? One with dozens of table rows? Wouldn't it be nice if
+        you could capture the table header cells and repeat them throughout the form automatically, saving you from having
+        to manually repeat the cells' information, and allowing the user to see these headers at frequent waypoints throughout the form, rather than having to constantly scroll to the top?
+    </p>
+
+    <p>
+        <strong>Enter bedhed.js.</strong>
+    </p>
+
+    <hr />
+
+    <div class="grid_4">
+        <h3>Repeated header</h3>
+
+        <ul class="optionsList">
+            <li>mode: "repeater",</li>
+            <li>period: 5,</li>
+            <li>terminateTable: false,</li>
+            <li>headerClass: "newClass",</li>
+            <li>preserveStyle: false</li>
+        </ul>
+
+        <table class="example1">
+            <tr>
+                <th>headerCell1</th>
+                <th>headerCell2</th>
+                <th>headerCell3</th>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+        </table>
+    </div>
+    <div class="grid_4">
+        <h3>Repeated header</h3>
+
+        <ul class="optionsList">
+            <li>mode: "repeater",</li>
+            <li>period: 5,</li>
+            <li>terminateTable: true,</li>
+            <li>// headerClass: "newClass",</li>
+            <li>// preserveStyle: false</li>
+        </ul>
+
+        <table class="example2">
+            <tr>
+                <th>headerCell1</th>
+                <th>headerCell2</th>
+                <th>headerCell3</th>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+        </table>
+    </div>
+    <div class="grid_4">
+        <h3>Fixed header</h3>
+
+        <ul class="optionsList">
+            <li>mode: "fixed",</li>
+            <li>// period: 5,</li>
+            <li>// terminateTable: false,</li>
+            <li>headerClass: "newClass",</li>
+            <li>// preserveStyle: false</li>
+        </ul>
+
+        <table class="example3">
+            <tr>
+                <th>headerCell1</th>
+                <th>headerCell2</th>
+                <th>headerCell3</th>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+            <tr>
+                <td>data1</td>
+                <td>data2</td>
+                <td>data3</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <div class="grid_12">
+        <h2>The options</h2>
+
+        <p>
+            bedhed.js has three different modes of operation: two subsets of the "repeater" mode, and the "fixed"
+            mode. Each of these three modes supports differing options. Please view the table below to see which
+            options are supported in the mode you're currently using.
+        </p>
+
+        <dl>
+            <dt>mode</dt>
+                <dd>{"repeater", "fixed"} - Chooses mode of operation for bedhed.js. In "repeater" mode, a row
+                    of header cells will be saved and then either injected into an existing table, or cloned into
+                    a new set of tables. In "fixed" mode, a fixed-position div will be appended to the screen,
+                    floating over the table as you scroll past.
+                </dd>
+            <dt>terminateTable</dt>
+                <dd>{true, false} - This option only works in "repeater" mode. If true, the table will be cloned
+                    and appended to the page, essentially creating a new set of tables, each with its own header
+                    row.
+                </dd>
+            <dt>period</dt>
+                <dd>{integer} - This option only works in "repeater" mode. An integer value for the period will
+                    determine the interval at which the header row is repeated.
+                </dd>
+            <dt>preserveStyle</dt>
+                <dd>{true, false} - This option only works in "repeater" mode when terminateTable is false. If true,
+                    the font CSS style of the header cells will be preserved for all new injected header rows.
+                </dd>
+            <dt>headerClass</dt>
+                <dd>{"string"} - If a quoted string is passed to this option, each newly-constructed header row
+                    will receieve the string as a CSS class, in order to be able to add additional styling.
+                </dd>
+        </dl>
+    </div>
+
+    <hr />
+
+    <div class="grid_4">
+        <h2>How it works</h2>
+
+        <p>
+            bedhed.js takes a properly-formatted table with a single header row, stores this row, and then either
+            repeats this header or provides a fixed-positioning option, based on options you pass to it.
+        </p>
+
+        <p>
+            bedhed.js has three primary modes of operation, each with its own supported options:
+        </p>
+    </div>
+
+    <div class="grid_8">
+        <table class="optionsTable">
+            <tr>
+                <th>
+                    Option
+                </th>
+                <th colspan="3">
+                    Modes of operation
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <!-- empty cell -->
+                </td>
+                <td colspan="2">
+                    Repeated header
+                </td>
+                <td>
+                    Fixed header
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- empty cell -->
+                </td>
+                <td>
+                    terminateTable: false
+                </td>
+                <td>
+                    terminateTable: true
+                </td>
+                <td>
+                    <!-- empty cell -->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    period (integer)
+                </td>
+                <td>
+                    YES
+                </td>
+                <td>
+                    YES
+                </td>
+                <td>
+                    NO
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    preserveStyle (boolean)
+                </td>
+                <td>
+                    YES
+                </td>
+                <td>
+                    NO
+                </td>
+                <td>
+                    NO
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    headerClass (string)
+                </td>
+                <td>
+                    YES
+                </td>
+                <td>
+                    NO
+                </td>
+                <td>
+                    YES
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <div class="grid_12">
+        <h2>Notes</h2>
+
+        <ul>
+            <li>
+                The most stable, feature-filled mode is "repeater" with terminateTable set to false. Using
+                terminateTable is not advisable if you're using bedhed.js on an HTML form especially, as the
+                form would be cloned and appended. Use it ONLY for static tables.
+            </li>
+            <li>
+                "Fixed" mode will not adapt to the user resizing the browser window. You'll need to refresh to
+                update the X offset of the new div.
+            </li>
+            <li>
+                I highly recommend using a CSS class or ID with bedhed.js, not just attaching bedhed.js to the
+                "table" jQuery-wrapped DOM element. It works best on individual tables.
+            </li>
+            <li>
+                Works great in IE7/8; doesn't appear to work in IE6. Sorry, I don't really care.
+            </li>
+        </ul>
+    </div>
 
 </div>
-<footer>
 
+<footer>
+    <span>bedhed.js is a jQuery plugin by <a href="http://jkymarsh.com">J. Ky Marsh</a></span>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script src="js/libs/jquery-1.7.2.min.js"></script>
+<script src="https://raw.github.com/jkymarsh/bedhedjs/master/bedhed.min.js"></script>
+
+<script>
+$(".example1").bedhed({
+    mode: "repeater",
+    period: 5,
+    terminateTable: false,
+    headerClass: "newClass",
+    preserveStyle: false
+});
+
+$(".example2").bedhed({
+    mode: "repeater",
+    period: 5,
+    terminateTable: true
+});
+
+$(".example3").bedhed({
+    mode: "fixed",
+    headerClass: "newClass"
+});
+</script>
 
 </body>
 </html>
